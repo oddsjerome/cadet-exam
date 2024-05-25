@@ -3,7 +3,7 @@ import { ref, computed, watch } from 'vue';
 import { useFetch } from '#app';
 import { type Coffee, getCoffeesUrl } from '~/data/coffee';
 
-const { data: coffees, refresh } = await useFetch<Coffee[]>(getCoffeesUrl);
+const { data: coffees, refresh } = await useFetch<Coffee[]>(getCoffeesUrl());
 
 const searchQuery = ref('');
 const filteredCoffees = computed(() => {
@@ -53,7 +53,7 @@ watch(searchQuery, () => {
                 <div class="bg-red-300 flex flex-col w-9/12 gap-5">
                     <SearchBar @search="handleSearch" />
                     <div class="grid grid-cols-3 gap-2 bg-white" v-if="filteredCoffees.length">
-                        <Card v-for="coffee in filteredCoffees" :key="coffee.id" :coffee="coffee" />
+                        <CoffeeCard v-for="coffee in filteredCoffees" :key="coffee.id" :coffee="coffee" />
                     </div>
                     <div>Pagination</div>
                 </div>
