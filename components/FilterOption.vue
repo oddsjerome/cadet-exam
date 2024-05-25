@@ -12,8 +12,8 @@ defineProps<{
         <ul class="grid grid-cols-3 md:flex md:flex-col space-y-2 flex-wrap">
             <li v-for="(option, index) in options" :key="index" class="flex items-center py-1 px-2 space-x-1">
                 <input :value="option.value" :id="option.value" type="checkbox"
-                    class="form-checkbox h-5 w-5 text-primary rounded" />
-                <label :for="option.value" class="text-gray-500">{{ option.value }}</label>
+                    class="form-checkbox h-3 w-3 text-primary rounded" />
+                <label :for="option.value" class="text-gray-500 text-sm">{{ option.value }}</label>
             </li>
         </ul>
     </div>
