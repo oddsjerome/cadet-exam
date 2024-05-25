@@ -12,10 +12,8 @@ console.log(coffee.value)
         <template v-if="coffee">
             <Container>
                 <div class="flex flex-col md:flex-row gap-4 py-10">
-                    <div class="bg-green-800 w-full md:w-2/3 rounded-xl">
-                        <div class="aspect-square">
-                            <img :src="coffee.image_url" :alt="coffee.name" />
-                        </div>
+                    <div class="bg-green-800 w-full md:w-2/3 rounded-xl aspect-square flex justify-center items-center">
+                        <img width="320px" :src="coffee.image_url" :alt="coffee.name" />
                     </div>
                     <div class="flex flex-col gap-8 md:p-0">
                         <div class="flex flex-col gap-4">
