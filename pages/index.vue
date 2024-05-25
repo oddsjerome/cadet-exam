@@ -46,7 +46,7 @@ watch(searchQuery, () => {
         <Banner />
         <Container>
             <div class="flex flex-col md:flex-row gap-4 pt-16">
-                <div class="flex flex-col w-3/12">
+                <div class="flex flex-col w-full md:w-3/12">
                     <Filter />
                 </div>
                 <div class="flex flex-col w-full md:w-9/12 gap-5">
