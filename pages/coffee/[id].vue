@@ -12,7 +12,7 @@ console.log(coffee.value)
         <template v-if="coffee">
             <Container>
                 <div class="flex flex-col md:flex-row gap-4 pt-14">
-                    <div class="bg-gray-200 w-full md:w-2/3 rounded-md">
+                    <div class="bg-green-800 w-full md:w-2/3 rounded-xl">
                         <div class="aspect-square">
                             <img :src="coffee.image_url" :alt="coffee.name" />
                         </div>

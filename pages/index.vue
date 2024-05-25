@@ -28,11 +28,11 @@ watch(searchQuery, () => {
     <main>
         <Banner />
         <Container>
-            <div class="flex gap-4">
-                <div class="bg-red-300 flex flex-col w-3/12">
+            <div class="flex gap-4 pt-16">
+                <div class="flex flex-col w-3/12">
                     <div class="flex justify-between items-center">
                         <p>Filters</p>
-                        <input type="button" value="Clear" class="border px-4 py-1 rounded-full">
+                        <input type="button" value="Clear" class="border px-4 py-1 rounded-full cursor-pointer">
                     </div>
                     <div>
                         <div>
@@ -50,7 +50,7 @@ watch(searchQuery, () => {
                         </div>
                     </div>
                 </div>
-                <div class="bg-red-300 flex flex-col w-9/12 gap-5">
+                <div class="flex flex-col w-9/12 gap-5">
                     <SearchBar @search="handleSearch" />
                     <div class="grid grid-cols-3 gap-2 bg-white" v-if="filteredCoffees.length">
                         <CoffeeCard v-for="coffee in filteredCoffees" :key="coffee.id" :coffee="coffee" />

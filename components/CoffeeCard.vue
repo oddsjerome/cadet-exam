@@ -7,7 +7,7 @@ const { coffee } = defineProps<{ coffee: Coffee }>()
 <template>
     <NuxtLink class="" :to="`/coffee/${coffee.id}`">
         <div>
-            <div class="bg-gray-300 h-52 rounded-md">
+            <div class="bg-green-800 h-52 rounded-lg">
                 <img :src="coffee.image_url" :alt="coffee.name">
             </div>
             <div class="pt-2">
