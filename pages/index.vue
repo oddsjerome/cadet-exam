@@ -39,6 +39,7 @@ const handleSearch = (query: string) => {
 
 watch(searchQuery, () => {
     refresh();
+    currentPage.value = 1
 });
 </script>
 
@@ -55,12 +56,7 @@ watch(searchQuery, () => {
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-2 bg-white" v-if="paginatedCoffees.length">
                         <CoffeeCard v-for="coffee in paginatedCoffees" :key="coffee.id" :coffee="coffee" />
                     </div>
-                    <div class="flex justify-center mt-4" v-if="totalPages > 1">
-                        <span v-for="page in totalPages" :key="page" @click="setPage(page)"
-                            :class="{ 'bg-green-800 text-white': currentPage === page, 'bg-gray-300': currentPage !== page }"
-                            class="mx-1 w-10 h-10 rounded-full cursor-pointer flex justify-center items-center">{{ page
-                            }}</span>
-                    </div>
+                   <Pagination @setPage="setPage"/>
                 </div>
             </div>
         </Container>
