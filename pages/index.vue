@@ -31,6 +31,12 @@ const setPage = (page: number) => {
     }
 };
 
+const nextPage = () => {
+    if (currentPage.value < totalPages.value) {
+        currentPage.value += 1;
+    }
+};
+
 const handleSearch = (query: string) => {
     searchQuery.value = query;
 };
@@ -54,7 +60,8 @@ watch(searchQuery, () => {
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-2 bg-white" v-if="paginatedCoffees.length">
                         <CoffeeCard v-for="coffee in paginatedCoffees" :key="coffee.id" :coffee="coffee" />
                     </div>
-                    <Pagination :totalPages="totalPages" :currentPage="currentPage" @setPage="setPage" />
+                    <Pagination :totalPages="totalPages" :currentPage="currentPage" @setPage="setPage"
+                        @nextPage="nextPage" />
                 </div>
             </div>
         </Container>
