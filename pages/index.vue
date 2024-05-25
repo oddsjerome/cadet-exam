@@ -45,7 +45,6 @@ watch(searchQuery, () => {
 <template>
     <main>
         <Banner />
-        <Button value="TEST" :isLeftIcon="true" variable="Filled" icon="" :click="() => { console.log('test') }" />
         <Container>
             <div class="flex flex-col md:flex-row gap-4 pt-16">
                 <div class="flex flex-col w-3/12">

@@ -10,7 +10,7 @@ const emit = defineEmits<{
     <div class="flex gap-2">
         <input type="search" name="search-input" placeholder="Starbuck product" id="" v-model="query"
             class="py-2 px-4 border rounded-full outline-none w-full">
-        <input type="button" name="search-button" value="Search"
-            class="bg-secondary text-white px-5 py-1 rounded-full cursor-pointer" @click="$emit('search', query)">
+        <Button value="Search" :isLeftIcon="true" variable="Filled" icon="" :click="$emit('search', query)" />
+
     </div>
 </template>

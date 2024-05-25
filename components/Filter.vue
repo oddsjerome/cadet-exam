@@ -4,7 +4,7 @@
     <div>
         <div class="flex justify-between items-center">
             <p>Filters</p>
-            <input type="button" value="Clear" class="border px-4 py-1 rounded-full cursor-pointer">
+            <Button value="Clear" :isLeftIcon="true" variable="Outlined" icon="" :click="() => { }" />
         </div>
         <div>
             <div>
