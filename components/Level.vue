@@ -18,7 +18,7 @@ const dots = Array.from({ length: props.max }, (_, index) => index + 1);
 <template>
     <div class="flex items-center space-x-1">
         <template v-for="dot in dots" :key="dot">
-            <span class="h-3 w-3 rounded-full" :class="{ 'bg-green-800': dot <= level, 'bg-gray-300': dot > level }"></span>
+            <span class="h-3 w-3 rounded-full" :class="{ 'bg-primary': dot <= level, 'bg-gray-300': dot > level }"></span>
         </template>
     </div>
 </template>
