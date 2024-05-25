@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useFetch } from '#app';
 import { type Coffee, getCoffeesUrl } from '~/data/coffee';
 
 const { data: coffees, refresh } = await useFetch<Coffee[]>(getCoffeesUrl());
