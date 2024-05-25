@@ -3,11 +3,14 @@
 <template>
     <div class="min-h-screen flex flex-col justify-between">
         <div>
-            <nav class="bg-[#303030] p-4">
+            <nav class="bg-[#303030] py-4">
                 <Container>
                     <div class="flex justify-between">
-                        <div class="w-5 h-5 bg-white"></div>
-                        <div class="w-5 h-5 bg-white"></div>
+                        <img width="48px" src="../public/starbucks_logo_72px.png" alt="starbucks_logo" />
+                        <div class="flex items-center gap-6 text-white text-sm">
+                            <p>Jerome Tana</p>
+                            <div class="w-12 h-12 rounded-full bg-white" />
+                        </div>
                     </div>
                 </Container>
             </nav>
