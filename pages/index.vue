@@ -1,28 +1,9 @@
 <script setup lang="ts">
 import { getCoffeesUrl, type Coffee } from '~/data/coffee';
 
-const { data: coffees, refresh } = await useFetch<Coffee[]>(
+const { data: coffees } = await useFetch<Coffee[]>(
     getCoffeesUrl()
 )
-
-const searchQuery = ref('');
-const filteredCoffees = computed(() => {
-    if (!searchQuery.value) {
-        return coffees.value || [];
-    }
-    return (coffees.value || []).filter(coffee =>
-        coffee.name.toLowerCase().includes(searchQuery.value.toLowerCase())
-    );
-});
-
-
-const handleSearch = (query: string) => {
-    searchQuery.value = query;
-};
-
-watch(searchQuery, () => {
-    refresh();
-});
 </script>
 
 <template>
@@ -52,9 +33,9 @@ watch(searchQuery, () => {
                     </div>
                 </div>
                 <div class="bg-red-300 flex flex-col w-9/12 gap-5">
-                    <SearchBar @search="handleSearch" />
-                    <div class="grid grid-cols-3 gap-2 bg-white" v-if="filteredCoffees.length">
-                        <Card v-for="coffee in filteredCoffees" :key="coffee.id" :coffee="coffee" />
+                    <Search />
+                    <div class="grid grid-cols-3 gap-2 bg-white">
+                        <Card v-for="coffee in coffees" :key="coffee.id" :coffee="coffee" />
                     </div>
                     <div>Pagination</div>
                 </div>
