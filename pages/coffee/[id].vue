@@ -11,13 +11,13 @@ console.log(coffee.value)
     <main>
         <template v-if="coffee">
             <Container>
-                <div class="flex flex-col md:flex-row gap-4 pt-14">
+                <div class="flex flex-col md:flex-row gap-4 py-10">
                     <div class="bg-green-800 w-full md:w-2/3 rounded-xl">
                         <div class="aspect-square">
                             <img :src="coffee.image_url" :alt="coffee.name" />
                         </div>
                     </div>
-                    <div class="flex flex-col gap-8 p-4 md:p-0">
+                    <div class="flex flex-col gap-8 md:p-0">
                         <div class="flex flex-col gap-4">
                             <h1 class="text-2xl">
                                 {{ coffee.name }}
@@ -27,7 +27,7 @@ console.log(coffee.value)
                         </div>
 
                         <div>
-                            <h2 class="text-lg pb-3">Coffee Profile</h2>
+                            <h2 class="text-lg pb-5">Coffee Profile</h2>
                             <div class="grid grid-cols-2 gap-4">
                                 <div>
                                     <h3>Grind options</h3>
