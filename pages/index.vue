@@ -56,7 +56,7 @@ watch(searchQuery, () => {
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-2 bg-white" v-if="paginatedCoffees.length">
                         <CoffeeCard v-for="coffee in paginatedCoffees" :key="coffee.id" :coffee="coffee" />
                     </div>
-                   <Pagination @setPage="setPage"/>
+                    <Pagination :totalPages="totalPages" :currentPage="currentPage" @setPage="setPage" />
                 </div>
             </div>
         </Container>
