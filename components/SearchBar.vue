@@ -1,7 +1,7 @@
 <script setup lang="ts">
 let query = ref("")
 
-const emit = defineEmits<{
+defineEmits<{
     (e: 'search', query: string): void;
 }>();
 

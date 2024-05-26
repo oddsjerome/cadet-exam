@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { list } = defineProps<{ list: string[] }>()
+defineProps<{ list: string[] }>()
 
 </script>
 <template>

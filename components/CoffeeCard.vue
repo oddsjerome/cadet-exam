@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Coffee } from '~/data/coffee';
 
-const { coffee } = defineProps<{ coffee: Coffee }>()
+defineProps<{ coffee: Coffee }>()
 
 </script>
 <template>

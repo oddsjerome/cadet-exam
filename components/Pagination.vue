@@ -1,10 +1,10 @@
 <script setup lang="ts">
-const emit = defineEmits<{
+defineEmits<{
     (e: 'setPage', page: number): void;
     (e: 'nextPage'): void;
 }>();
 
-const { totalPages, currentPage } = defineProps<{ totalPages: number, currentPage: number }>()
+defineProps<{ totalPages: number, currentPage: number }>()
 
 
 </script>
@@ -17,6 +17,8 @@ const { totalPages, currentPage } = defineProps<{ totalPages: number, currentPag
             }}</span>
         <button :disabled="currentPage == totalPages"
             class="hover:bg-gray-200 mx-1 w-10 h-10 rounded-full flex justify-center items-center duration-200"
-            @click="$emit('nextPage')">></button>
+            @click="$emit('nextPage')">
+            <IconsArrowForward class="fill-black" />
+        </button>
     </div>
 </template>
