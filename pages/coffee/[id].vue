@@ -4,7 +4,6 @@ import { getCoffeeDetailUrl, type Coffee } from '~/data/coffee';
 const id = useParam('id')
 const { data: coffees } = await useFetch<Coffee[]>(getCoffeeDetailUrl(id));
 const coffee: Ref<Coffee | undefined> = coffees.value !== null ? ref(coffees.value[0]) : ref();
-console.log(coffee.value)
 </script>
 
 <template>
