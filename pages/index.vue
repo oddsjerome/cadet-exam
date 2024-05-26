@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue';
-import { type Coffee, getCoffeesUrl } from '~/data/coffee';
+import { type Coffee } from '~/data/coffee';
 
-const { data: coffees, refresh } = await useFetch<Coffee[]>(getCoffeesUrl());
+const config = useRuntimeConfig();
+
+const { data: coffees, refresh } = await useFetch<Coffee[]>(config.public.apiBase);
 const searchQuery = ref('');
 const currentPage = ref(1);
 const itemsPerPage = 12;

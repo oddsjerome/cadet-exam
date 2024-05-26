@@ -11,7 +11,3 @@ export interface Coffee {
   roast_level: number;
   image_url: string | string[];
 }
-
-export const getCoffeesUrl = () => "https://fake-coffee-api.vercel.app/api";
-export const getCoffeeDetailUrl = (id: string) =>
-  `https://fake-coffee-api.vercel.app/api/${id}`;

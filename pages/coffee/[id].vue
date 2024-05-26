@@ -1,8 +1,11 @@
 <script setup lang="ts">
-import { getCoffeeDetailUrl, type Coffee } from '~/data/coffee';
+import { type Coffee } from '~/data/coffee';
 
 const id = useParam('id')
-const { data: coffees } = await useFetch<Coffee[]>(getCoffeeDetailUrl(id));
+
+const config = useRuntimeConfig();
+
+const { data: coffees } = await useFetch<Coffee[]>(config.public.apiBase + `/${id}`);
 const coffee: Ref<Coffee | undefined> = coffees.value !== null ? ref(coffees.value[0]) : ref();
 
 const currentImage = ref(coffee.value?.image_url)
@@ -21,7 +24,8 @@ const selectImage = (imageUrl: string) => {
                     <div class="w-full md:w-2/3 flex flex-col gap-4">
                         <div class="bg-primary rounded-xl aspect-square flex justify-center items-center">
                             <div class="relative">
-                                <img width="320px" v-if="typeof coffee.image_url === 'string'" :src="(currentImage as string)" :alt="coffee.name" />
+                                <img width="320px" v-if="typeof coffee.image_url === 'string'"
+                                    :src="(currentImage as string)" :alt="coffee.name" />
                             </div>
                         </div>
                         <div v-if="Array.isArray(coffee.image_url)"
