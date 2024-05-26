@@ -32,18 +32,46 @@ const flavorProfiles = [
     { value: "Vanilla" }
 ];
 
+const selectedGrindOptions = ref<string[]>([]);
+const selectedFlavorProfiles = ref<string[]>([]);
+
+const emit = defineEmits<{
+    (e: 'update:filters', grindOptions: string[], flavorProfiles: string[]): void;
+}>();
+
+const handleFilterUpdate = (filterType: string, selectedOptions: string[]) => {
+    if (filterType === 'Grind option') {
+        selectedGrindOptions.value = selectedOptions;
+    } else if (filterType === 'Flavor profile') {
+        console.log("มายาง");
+
+        selectedFlavorProfiles.value = selectedOptions;
+    }
+};
+
+const clearFilters = () => {
+    selectedGrindOptions.value = [];
+    selectedFlavorProfiles.value = [];
+};
+
+watch([selectedGrindOptions, selectedFlavorProfiles], () => {
+    emit('update:filters', selectedGrindOptions.value, selectedFlavorProfiles.value);
+});
+
 </script>
 <template>
     <div>
-        <div class="flex justify-between items-center mb-10 ">
+        <div class="flex justify-between items-center mb-10">
             <p class="text-lg font-semibold">Filters</p>
-            <Button value="Clear" :isLeftIcon="true" variable="Outlined" :click="() => { }">
+            <Button value="Clear" :isLeftIcon="true" variable="Outlined" :click="clearFilters">
                 <icons-close />
             </Button>
         </div>
         <div>
-            <FilterOption name="Grind option" :options="grindOptions" />
-            <FilterOption name="Flavor profile" :options="flavorProfiles" />
+            <FilterOption name="Grind option" :options="grindOptions" :selectedOptions="selectedGrindOptions"
+                @update:selectedOptions="handleFilterUpdate" />
+            <FilterOption name="Flavor profile" :options="flavorProfiles" :selectedOptions="selectedFlavorProfiles"
+                @update:selectedOptions="handleFilterUpdate" />
         </div>
     </div>
 </template>
