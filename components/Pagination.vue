@@ -15,8 +15,8 @@ const { totalPages, currentPage } = defineProps<{ totalPages: number, currentPag
             class="mx-1 w-10 h-10 rounded-full cursor-pointer flex justify-center items-center duration-200">{{
                 page
             }}</span>
-        <span
-            class="hover:bg-gray-200 mx-1 w-10 h-10 rounded-full cursor-pointer flex justify-center items-center duration-200"
-            @click="$emit('nextPage')">></span>
+        <button :disabled="currentPage == totalPages"
+            class="hover:bg-gray-200 mx-1 w-10 h-10 rounded-full flex justify-center items-center duration-200"
+            @click="$emit('nextPage')">></button>
     </div>
 </template>
