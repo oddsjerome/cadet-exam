@@ -27,7 +27,7 @@ const coffee: Ref<Coffee | undefined> = coffees.value !== null ? ref(coffees.val
                             <h2 class="text-lg pb-5">Coffee Profile</h2>
                             <div class="grid grid-cols-2 gap-4">
                                 <div>
-                                    <h3>Grind options</h3>
+                                    <h3>Flavor profile</h3>
                                     <h4 class="text-gray-500">{{ coffee.flavor_profile.toString().replaceAll(",", ", ") }}
                                     </h4>
                                 </div>
