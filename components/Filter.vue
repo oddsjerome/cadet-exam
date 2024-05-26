@@ -63,7 +63,7 @@ watch([selectedGrindOptions, selectedFlavorProfiles], () => {
     <div>
         <div class="flex justify-between items-center mb-10">
             <p class="text-lg font-semibold">Filters</p>
-            <Button value="Clear" :isLeftIcon="true" variable="Outlined" :click="clearFilters">
+            <Button value="Clear" :isLeftIcon="true" variable="primary-outlined" :click="clearFilters">
                 <icons-close />
             </Button>
         </div>
