@@ -37,7 +37,9 @@ const flavorProfiles = [
     <div>
         <div class="flex justify-between items-center mb-10 ">
             <p class="text-lg font-semibold">Filters</p>
-            <Button value="Clear" :isLeftIcon="true" variable="Outlined" icon="" :click="() => { }" />
+            <Button value="Clear" :isLeftIcon="true" variable="Outlined" :click="() => { }">
+                <icons-close />
+            </Button>
         </div>
         <div>
             <FilterOption name="Grind option" :options="grindOptions" />
