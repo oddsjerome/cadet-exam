@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import { type Coffee } from '~/data/coffee';
 
-const config = useRuntimeConfig();
-
-const { data: coffees, refresh } = await useFetch<Coffee[]>(config.public.apiBase);
+const { data: coffees, refresh } = await useFetch<Coffee[]>("/api/coffee");
 const searchQuery = ref('');
 const currentPage = ref(1);
 const itemsPerPage = 12;
