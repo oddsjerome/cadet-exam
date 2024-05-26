@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import { useFilterStore } from '~/stores/useFilterStore';
+
+const filterStore = useFilterStore();
+
 const grindOptions = [
     { value: "Whole Bean" },
     { value: "Cafetiere" },
@@ -32,21 +36,11 @@ const flavorProfiles = [
     { value: "Vanilla" }
 ];
 
-const emit = defineEmits<{
-    (e: 'update:filters', filterType: string, updatedOptions: string[]): void;
-}>();
-
-const handleFilterUpdate = (filterType: string, selectedOptions: string[]) => {
-    emit('update:filters', filterType, selectedOptions);
-};
-
 const clearFilters = () => {
-    const filterOptions = document.querySelectorAll('input[type="checkbox"]');
-    filterOptions.forEach(option => (option as HTMLInputElement).checked = false);
-    handleFilterUpdate('Grind option', []);
-    handleFilterUpdate('Flavor profile', []);
+    filterStore.clearFilters();
 };
 </script>
+
 <template>
     <div>
         <div class="flex justify-between items-center mb-10">
@@ -56,8 +50,8 @@ const clearFilters = () => {
             </Button>
         </div>
         <div>
-            <FilterOption name="Grind option" :options="grindOptions" @update:selectedOptions="handleFilterUpdate" />
-            <FilterOption name="Flavor profile" :options="flavorProfiles" @update:selectedOptions="handleFilterUpdate" />
+            <FilterOption name="Grind option" :options="grindOptions" />
+            <FilterOption name="Flavor profile" :options="flavorProfiles" />
         </div>
     </div>
 </template>

@@ -1,14 +1,15 @@
 <script setup lang="ts">
+import { useFilterStore } from '~/stores/useFilterStore';
+
 const props = defineProps<{
     name: string,
     options: { value: string }[]
 }>();
 
-const selectedOptions = ref<string[]>([]);
+const filterStore = useFilterStore();
+const { selectedGrindOptions, selectedFlavorProfiles } = storeToRefs(filterStore)
 
-const emit = defineEmits<{
-    (e: 'update:selectedOptions', name: string, value: string[]): void;
-}>();
+const selectedOptions = ref<string[]>([]);
 
 const toggleOption = (value: string) => {
     const index = selectedOptions.value.indexOf(value);
@@ -17,7 +18,11 @@ const toggleOption = (value: string) => {
     } else {
         selectedOptions.value.push(value);
     }
-    emit('update:selectedOptions', props.name, selectedOptions.value);
+    if (props.name === 'Grind option') {
+        filterStore.setGrindOptions([...selectedOptions.value]);
+    } else if (props.name === 'Flavor profile') {
+        filterStore.setFlavorProfiles([...selectedOptions.value]);
+    }
 };
 
 const isVisible = ref(true);
@@ -26,8 +31,20 @@ const toggleVisibility = () => {
     isVisible.value = !isVisible.value;
 };
 
-watch(() => selectedOptions.value, () => {
-    emit('update:selectedOptions', props.name, selectedOptions.value);
+watch(() => {
+    if (props.name === 'Grind option') {
+        return selectedGrindOptions;
+    } else if (props.name === 'Flavor profile') {
+        return selectedFlavorProfiles;
+    }
+}, (newOptions) => {
+    if (newOptions) {
+        console.log("add new option");
+        selectedOptions.value = [...newOptions.value];
+    } else {
+        console.log("remove");
+        selectedOptions.value = [];
+    }
 });
 </script>
 
