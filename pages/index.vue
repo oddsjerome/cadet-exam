@@ -44,9 +44,12 @@ const handleSearch = (query: string) => {
     searchQuery.value = query;
 };
 
-const handleFilterUpdate = (grindOptions: string[], flavorProfiles: string[]) => {
-    selectedGrindOptions.value = grindOptions;
-    selectedFlavorProfiles.value = flavorProfiles;
+const handleFilterUpdate = (filterType: string, updatedOptions: string[]) => {
+    if (filterType === "Grind option") {
+        selectedGrindOptions.value = updatedOptions;
+    } else if (filterType === "Flavor profile") {
+        selectedFlavorProfiles.value = updatedOptions;
+    }
     currentPage.value = 1;
 };
 

@@ -32,32 +32,20 @@ const flavorProfiles = [
     { value: "Vanilla" }
 ];
 
-const selectedGrindOptions = ref<string[]>([]);
-const selectedFlavorProfiles = ref<string[]>([]);
-
 const emit = defineEmits<{
-    (e: 'update:filters', grindOptions: string[], flavorProfiles: string[]): void;
+    (e: 'update:filters', filterType: string, updatedOptions: string[]): void;
 }>();
 
 const handleFilterUpdate = (filterType: string, selectedOptions: string[]) => {
-    if (filterType === 'Grind option') {
-        selectedGrindOptions.value = selectedOptions;
-    } else if (filterType === 'Flavor profile') {
-        console.log("มายาง");
-
-        selectedFlavorProfiles.value = selectedOptions;
-    }
+    emit('update:filters', filterType, selectedOptions);
 };
 
 const clearFilters = () => {
-    selectedGrindOptions.value = [];
-    selectedFlavorProfiles.value = [];
+    const filterOptions = document.querySelectorAll('input[type="checkbox"]');
+    filterOptions.forEach(option => (option as HTMLInputElement).checked = false);
+    handleFilterUpdate('Grind option', []);
+    handleFilterUpdate('Flavor profile', []);
 };
-
-watch([selectedGrindOptions, selectedFlavorProfiles], () => {
-    emit('update:filters', selectedGrindOptions.value, selectedFlavorProfiles.value);
-});
-
 </script>
 <template>
     <div>
@@ -68,10 +56,8 @@ watch([selectedGrindOptions, selectedFlavorProfiles], () => {
             </Button>
         </div>
         <div>
-            <FilterOption name="Grind option" :options="grindOptions" :selectedOptions="selectedGrindOptions"
-                @update:selectedOptions="handleFilterUpdate" />
-            <FilterOption name="Flavor profile" :options="flavorProfiles" :selectedOptions="selectedFlavorProfiles"
-                @update:selectedOptions="handleFilterUpdate" />
+            <FilterOption name="Grind option" :options="grindOptions" @update:selectedOptions="handleFilterUpdate" />
+            <FilterOption name="Flavor profile" :options="flavorProfiles" @update:selectedOptions="handleFilterUpdate" />
         </div>
     </div>
 </template>

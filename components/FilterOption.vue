@@ -1,13 +1,10 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue';
-
 const props = defineProps<{
     name: string,
-    options: { value: string }[],
-    selectedOptions: string[]
+    options: { value: string }[]
 }>();
 
-const selectedOptions = ref([...props.selectedOptions]);
+const selectedOptions = ref<string[]>([]);
 
 const emit = defineEmits<{
     (e: 'update:selectedOptions', name: string, value: string[]): void;
@@ -17,10 +14,10 @@ const toggleOption = (value: string) => {
     const index = selectedOptions.value.indexOf(value);
     if (index > -1) {
         selectedOptions.value.splice(index, 1);
-
     } else {
         selectedOptions.value.push(value);
     }
+    emit('update:selectedOptions', props.name, selectedOptions.value);
 };
 
 const isVisible = ref(true);
@@ -29,7 +26,7 @@ const toggleVisibility = () => {
     isVisible.value = !isVisible.value;
 };
 
-watch(selectedOptions.value, () => {
+watch(() => selectedOptions.value, () => {
     emit('update:selectedOptions', props.name, selectedOptions.value);
 });
 </script>
