@@ -4,6 +4,13 @@ import { getCoffeeDetailUrl, type Coffee } from '~/data/coffee';
 const id = useParam('id')
 const { data: coffees } = await useFetch<Coffee[]>(getCoffeeDetailUrl(id));
 const coffee: Ref<Coffee | undefined> = coffees.value !== null ? ref(coffees.value[0]) : ref();
+
+const currentImage = ref(coffee.value?.image_url)
+
+const selectImage = (imageUrl: string) => {
+    currentImage.value = imageUrl;
+};
+
 </script>
 
 <template>
@@ -11,8 +18,19 @@ const coffee: Ref<Coffee | undefined> = coffees.value !== null ? ref(coffees.val
         <template v-if="coffee">
             <Container>
                 <div class="flex flex-col md:flex-row gap-4 py-10">
-                    <div class="bg-primary w-full md:w-2/3 rounded-xl aspect-square flex justify-center items-center">
-                        <img width="320px" :src="coffee.image_url" :alt="coffee.name" />
+                    <div class="w-full md:w-2/3 flex flex-col gap-4">
+                        <div class="bg-primary rounded-xl aspect-square flex justify-center items-center">
+                            <div class="relative">
+                                <img width="320px" v-if="typeof coffee.image_url === 'string'" :src="(currentImage as string)" :alt="coffee.name" />
+                            </div>
+                        </div>
+                        <div v-if="Array.isArray(coffee.image_url)"
+                            class="flex justify-center flex-wrap space-x-2 px-4 pb-4 ">
+                            <template v-for="(imageUrl, index) in coffee.image_url" :key="index">
+                                <img width="80px" :src="imageUrl" :alt="coffee.name" @click="selectImage(imageUrl)"
+                                    class="cursor-pointer bg-primary border border-gray-300 rounded-lg" />
+                            </template>
+                        </div>
                     </div>
                     <div class="flex flex-col gap-8 md:p-0">
                         <div class="flex flex-col gap-4">

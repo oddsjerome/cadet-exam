@@ -9,7 +9,7 @@ export interface Coffee {
   flavor_profile: string[];
   grind_option: string[];
   roast_level: number;
-  image_url: string;
+  image_url: string | string[];
 }
 
 export const getCoffeesUrl = () => "https://fake-coffee-api.vercel.app/api";
