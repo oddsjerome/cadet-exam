@@ -12,8 +12,8 @@ const selectedFlavorProfiles = ref<string[]>([]);
 const filteredCoffees = computed(() => {
     return (coffees.value || []).filter(coffee => {
         const matchesSearch = !searchQuery.value || coffee.name.toLowerCase().includes(searchQuery.value.toLowerCase());
-        const matchesGrind = !selectedGrindOptions.value.length || selectedGrindOptions.value.some(option => coffee.grind_option.includes(option));
-        const matchesFlavor = !selectedFlavorProfiles.value.length || selectedFlavorProfiles.value.some(profile => coffee.flavor_profile.includes(profile));
+        const matchesGrind = !selectedGrindOptions.value.length || selectedGrindOptions.value.every(option => coffee.grind_option.includes(option));
+        const matchesFlavor = !selectedFlavorProfiles.value.length || selectedFlavorProfiles.value.every(profile => coffee.flavor_profile.includes(profile));
         return matchesSearch && matchesGrind && matchesFlavor;
     });
 });
