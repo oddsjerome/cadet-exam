@@ -3,9 +3,7 @@ import { type Coffee } from '~/data/coffee';
 
 const id = useParam('id')
 
-const config = useRuntimeConfig();
-
-const { data: coffees } = await useFetch<Coffee[]>(config.public.apiBase + `/${id}`);
+const { data: coffees } = await useFetch<Coffee[]>(`/api/coffee/${id}`);
 const coffee: Ref<Coffee | undefined> = coffees.value !== null ? ref(coffees.value[0]) : ref();
 
 const currentImage = ref(coffee.value?.image_url)
