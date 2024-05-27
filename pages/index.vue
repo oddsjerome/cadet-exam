@@ -6,8 +6,8 @@ const searchQuery = ref('');
 const currentPage = ref(1);
 const itemsPerPage = 12;
 
-const filterStore = useFilterStore() 
-const {selectedGrindOptions, selectedFlavorProfiles} = storeToRefs(filterStore)
+const filterStore = useFilterStore()
+const { selectedGrindOptions, selectedFlavorProfiles } = storeToRefs(filterStore)
 
 const filteredCoffees = computed(() => {
     return (coffees.value || []).filter(coffee => {
