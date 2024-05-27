@@ -50,8 +50,10 @@ watch(() => {
 
 <template>
     <div class="mb-8">
-        <button @click="toggleVisibility" class="w-full text-start focus:outline-none">
+        <button @click="toggleVisibility" class="w-full text-start focus:outline-none flex justify-between ">
             <h2 class="pb-2">{{ name }}</h2>
+            <icons-arrow-drop-down v-if="isVisible" class="fill-gray-500 rotate-180" />
+            <icons-arrow-drop-down v-else class="fill-gray-500" />
         </button>
         <hr class="mb-4">
         <transition name="fade">
