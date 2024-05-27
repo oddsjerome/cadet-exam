@@ -19,7 +19,8 @@ watch(query, () => {
                 <IconsSearch class="fill-black h-full w-10 pl-4" />
             </label>
             <input type="search" name="search-input" id="search-input" placeholder="Starbucks product" v-model="query"
-                @keyup.enter="$emit('search', query)" class="py-2 px-4 border-y border-r rounded-r-full outline-none w-full">
+                @keyup.enter="$emit('search', query)"
+                class="py-2 px-4 border-y border-r rounded-r-full outline-none w-full bg-white">
         </div>
         <Button value="Search" :isLeftIcon="true" variable="secondary-filled" :isDisabled="!query"
             :click="() => { $emit('search', query) }" />
