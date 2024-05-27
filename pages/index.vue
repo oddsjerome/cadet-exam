@@ -69,10 +69,10 @@ watch(searchQuery, () => {
                 </div>
                 <div class="flex flex-col w-full md:w-9/12 gap-5">
                     <SearchBar @search="handleSearch" />
-                    <div class="grid grid-cols-2 md:grid-cols-3 gap-2 bg-white" v-if="paginatedCoffees.length">
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-2 bg-white mb-10" v-if="paginatedCoffees.length">
                         <CoffeeCard v-for="coffee in paginatedCoffees" :key="coffee.id" :coffee="coffee" />
                     </div>
-                    <div v-else class="text-center py-32">
+                    <div v-else class="text-center pt-32">
                         <p class="text-gray-500">No item found.</p>
                     </div>
                     <Pagination :totalPages="totalPages" :currentPage="currentPage" @setPage="setPage"
