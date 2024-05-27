@@ -1,9 +1,15 @@
 <script setup lang="ts">
 let query = ref("")
 
-defineEmits<{
+const emit = defineEmits<{
     (e: 'search', query: string): void;
 }>();
+
+watch(query, () => {
+    if (query.value === "") {
+        emit('search', query.value)
+    }
+});
 
 </script>
 <template>
