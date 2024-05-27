@@ -15,7 +15,7 @@ defineEmits<{
             <input type="search" name="search-input" id="search-input" placeholder="Starbucks product" v-model="query"
                 class="py-2 px-4 border-y border-r rounded-r-full outline-none w-full">
         </div>
-        <Button value="Search" :isLeftIcon="true" variable="secondary-filled" icon=""
+        <Button value="Search" :isLeftIcon="true" variable="secondary-filled" :isDisabled="!query"
             :click="() => { $emit('search', query) }" />
     </div>
 </template>
