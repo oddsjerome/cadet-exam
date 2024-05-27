@@ -38,6 +38,10 @@ const flavorProfiles = [
 
 const clearFilters = () => {
     filterStore.clearFilters();
+    const filterOptions = document.querySelectorAll('input[type="checkbox"]');
+    filterOptions.forEach(
+        (option) => ((option as HTMLInputElement).checked = false)
+    );
 };
 </script>
 
