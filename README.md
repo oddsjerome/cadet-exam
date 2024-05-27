@@ -2,6 +2,12 @@
 
 demo: [https://cadet-exam.vercel.app/](https://cadet-exam.vercel.app/)
 
+### สร้าง .env ด้วยน้า
+
+```
+NUXT_PUBLIC_COFFEE_API_URL=https://fake-coffee-api.vercel.app/api
+```
+
 # Nuxt 3 Minimal Starter
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
