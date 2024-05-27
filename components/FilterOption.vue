@@ -57,7 +57,7 @@ watch(() => {
         </button>
         <hr class="mb-4">
         <transition name="fade">
-            <ul v-if="isVisible" class="grid grid-cols-3 md:flex md:flex-col space-y-2 flex-wrap">
+            <ul :class="isVisible ? 'hidden' : 'grid grid-cols-3 md:flex md:flex-col space-y-2 flex-wrap'">
                 <li v-for="(option, index) in options" :key="index" class="flex items-center py-1 px-2 space-x-1">
                     <input :value="option.value" :id="option.value" type="checkbox"
                         class="form-checkbox h-4 w-4 text-primary rounded" :checked="selectedOptions.includes(option.value)"
